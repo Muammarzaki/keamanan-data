@@ -3,6 +3,47 @@ from tkinter import messagebox
 
 from caesar import Caesar
 
+class Caesar:
+    def __init__(self, shift):
+        self.shift = shift
+
+    def encryption(self, plain_text):
+        cipher_text = ""
+        for char in plain_text:
+            if char.isupper():
+                cipher_text += chr((ord(char) + self.shift - 65) % 26 + 65)
+            elif char.islower():
+                cipher_text += chr((ord(char) + self.shift - 97) % 26 + 97)
+            else:
+                cipher_text += char
+        return cipher_text
+
+    def decryption(self, cipher_text):
+        plain_text = ""
+        for char in cipher_text:
+            if char.isupper():
+                plain_text += chr((ord(char) - self.shift - 65) % 26 + 65)
+            elif char.islower():
+                plain_text += chr((ord(char) - self.shift - 97) % 26 + 97)
+            else:
+                plain_text += char
+        return plain_text
+
+
+def main():
+    with Caesar(3) as cs:
+        print("Selamat datang!")
+        plain_text = input("Masukkan teks asli (plain text): ")
+        shift = int(input("Masukkan nilai pergeseran (1-25): "))
+
+        # Panggil fungsi enkripsi
+        cipher_text = cs.encryption(plain_text)
+        print("Teks terenkripsi: ", cipher_text)
+
+        # Panggil fungsi deskripsi
+        deskripsi_text = cs.decryption(cipher_text)
+        print("Teks terdekripsi: ", deskripsi_text)
+
 
 def process_text():
     shift = shift_entry.get()
@@ -49,7 +90,7 @@ text_frame.grid(row=1, column=0, padx=20, pady=20)
 
 # Text area for input
 tk.Label(text_frame, text="Decrypted Text:", bg="#87CEEB", font=("Arial", 12)).grid(row=0, column=0, padx=10, pady=10,
-                                                                                sticky="w")
+                                                                                    sticky="w")
 encrypted_text = tk.Text(text_frame, height=10, width=50, font=("Arial", 12), wrap="word")
 encrypted_text.grid(row=1, column=0, padx=10, pady=10)
 
@@ -78,7 +119,7 @@ dec_radio.grid(row=1, column=1, padx=10, pady=10, sticky="w")
 
 # Text area for output
 tk.Label(text_frame, text="Encrypted Text:", bg="#87CEEB", font=("Arial", 12)).grid(row=0, column=2, padx=10, pady=10,
-                                                                                 sticky="w")
+                                                                                    sticky="w")
 decrypted_text = tk.Text(text_frame, height=10, width=50, font=("Arial", 12), wrap="word")
 decrypted_text.grid(row=1, column=2, padx=10, pady=10)
 
