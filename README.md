@@ -1,3 +1,6 @@
+Nama  : Muammar Zaki \
+NIM   : 220705045
+
 Struktur File dalam Repo
 ```
 / --.
@@ -22,3 +25,8 @@ Struktur File dalam Repo
 
 4. **steganogui.py**:  
    GUI untuk steganografi. Metode umum seperti **Least Significant Bit (LSB)** digunakan untuk menyembunyikan data dalam media digital (misalnya, mengganti bit terakhir piksel gambar dengan data pesan).
+
+### Cara menjalankannya
+```shell
+python <nama file>
+```
