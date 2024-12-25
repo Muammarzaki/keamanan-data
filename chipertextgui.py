@@ -1,8 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
 
-from caesar import Caesar
-
 class Caesar:
     def __init__(self, shift):
         self.shift = shift
